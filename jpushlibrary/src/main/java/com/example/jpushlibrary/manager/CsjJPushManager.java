@@ -1,4 +1,4 @@
-package com.example.ben.jpushdemo.manager;
+package com.example.jpushlibrary.manager;
 
 import android.content.Context;
 import android.content.IntentFilter;
@@ -6,20 +6,19 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.ben.jpushdemo.constant.JPushConstant;
-import com.example.ben.jpushdemo.event.JPushEvent;
-import com.example.ben.jpushdemo.event.JPushMessageEvent;
-import com.example.ben.jpushdemo.event.JPushTagsAliasEvent;
-import com.example.ben.jpushdemo.factory.CsjMessageFactory;
-import com.example.ben.jpushdemo.listener.JPushEventListener;
-import com.example.ben.jpushdemo.listener.JPushListener;
-import com.example.ben.jpushdemo.listener.JPushMessageListener;
-import com.example.ben.jpushdemo.listener.JPushTagsAliasListener;
-import com.example.ben.jpushdemo.receiver.JPushGetMessageReceiver;
-import com.example.ben.jpushdemo.receiver.JPushGetTagAliasReceiver;
+import com.example.jpushlibrary.constant.JPushConstant;
+import com.example.jpushlibrary.event.JPushEvent;
+import com.example.jpushlibrary.event.JPushMessageEvent;
+import com.example.jpushlibrary.event.JPushTagsAliasEvent;
+import com.example.jpushlibrary.factory.CsjMessageFactory;
+import com.example.jpushlibrary.listener.JPushEventListener;
+import com.example.jpushlibrary.listener.JPushListener;
+import com.example.jpushlibrary.listener.JPushMessageListener;
+import com.example.jpushlibrary.listener.JPushTagsAliasListener;
+import com.example.jpushlibrary.receiver.JPushGetTagAliasReceiver;
+import com.example.jpushlibrary.receiver.JPushGetMessageReceiver;
 
 import java.util.Set;
-
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.JPushMessage;
 
@@ -54,25 +53,20 @@ public class CsjJPushManager implements JPushMessageListener, JPushTagsAliasList
         return Holder.mManager;
     }
 
+
     /**
-     * 先初始化Manager
+     * 初始化JPush
+     * 可以在需要调用的地方初始化
      *
      * @param context 应用的 ApplicationContext
      */
-    public void initManager(Context context) {
+    public void init(Context context) {
         this.mContext = context;
         if (mListener == null) {
             mListener = CsjMessageFactory.newInstance(context);
         }
-        initReceiver();
-    }
-
-    /**
-     * 初始化JPush，建议在Application中进行初始化
-     * 可以在需要调用的地方初始化
-     */
-    public void init() {
         mListener.init();
+        initReceiver();
     }
 
     /**

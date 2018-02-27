@@ -1,4 +1,4 @@
-package com.example.ben.jpushdemo.receiver;
+package com.example.jpushlibrary.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.example.ben.jpushdemo.listener.JPushMessageListener;
+import com.example.jpushlibrary.listener.JPushMessageListener;
 
 
 /**
@@ -14,7 +14,7 @@ import com.example.ben.jpushdemo.listener.JPushMessageListener;
  * @date 2018/2/1
  */
 
-public class JPushReceiver extends BroadcastReceiver {
+public class JPushGetMessageReceiver extends BroadcastReceiver {
 
     private JPushMessageListener mListener;
 

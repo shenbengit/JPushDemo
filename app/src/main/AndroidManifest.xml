@@ -20,6 +20,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -138,7 +139,7 @@
         <!-- 新的tag/alias接口结果返回需要开发者配置一个自定的广播 -->
         <!-- 该广播需要继承JPush提供的JPushMessageReceiver类, 并如下新增一个 Intent-Filter -->
         <receiver
-            android:name=".receiver.JPushGetMessageReceiver"
+            android:name=".receiver.JPushGetTagAliasReceiver"
             android:enabled="true">
             <!--<intent-filter>-->
                 <!--<action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />-->
@@ -149,7 +150,7 @@
 
         <!-- User defined. 用户自定义的广播接收器 -->
         <receiver
-            android:name=".receiver.JPushReceiver"
+            android:name=".receiver.JPushGetMessageReceiver"
             android:enabled="true"
             android:exported="false">
             <!--<intent-filter>-->

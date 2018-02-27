@@ -19,7 +19,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
 
-        CsjJPushManager.getInstance().init(getApplicationContext());
+        CsjJPushManager.getInstance().initManager(getApplicationContext());
 
         initView();
         initData();

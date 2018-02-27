@@ -1,58 +1,33 @@
 package com.example.ben.jpushdemo.receiver;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-import com.example.ben.jpushdemo.listener.JPushTagsAliasListener;
+import com.example.ben.jpushdemo.listener.JPushMessageListener;
 
-import cn.jpush.android.api.JPushMessage;
-import cn.jpush.android.service.JPushMessageReceiver;
 
 /**
- * 自定义JPush message 接收器,包括操作tag/alias的结果返回(仅仅包含tag/alias新接口部分)
- *
  * @author Ben
  * @date 2018/2/1
  */
 
-public class JPushGetMessageReceiver extends JPushMessageReceiver {
+public class JPushGetMessageReceiver extends BroadcastReceiver {
 
-    private JPushTagsAliasListener mListener;
+    private JPushMessageListener mListener;
 
-    public void setListener(JPushTagsAliasListener listener) {
+    public void setListener(JPushMessageListener listener) {
         this.mListener = listener;
     }
 
     @Override
-    public void onTagOperatorResult(Context context, JPushMessage jPushMessage) {
-        super.onTagOperatorResult(context, jPushMessage);
-        if (mListener != null && jPushMessage != null) {
-            mListener.onTagOperatorResult(jPushMessage);
-        }
-
-    }
-
-    @Override
-    public void onCheckTagOperatorResult(Context context, JPushMessage jPushMessage) {
-        super.onCheckTagOperatorResult(context, jPushMessage);
-        if (mListener != null && jPushMessage != null) {
-            mListener.onCheckTagOperatorResult(jPushMessage);
-        }
-
-    }
-
-    @Override
-    public void onAliasOperatorResult(Context context, JPushMessage jPushMessage) {
-        super.onAliasOperatorResult(context, jPushMessage);
-        if (mListener != null && jPushMessage != null) {
-            mListener.onAliasOperatorResult(jPushMessage);
-        }
-    }
-
-    @Override
-    public void onMobileNumberOperatorResult(Context context, JPushMessage jPushMessage) {
-        super.onMobileNumberOperatorResult(context, jPushMessage);
-        if (mListener != null && jPushMessage != null) {
-            mListener.onMobileNumberOperatorResult(jPushMessage);
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+        Bundle bundle = intent.getExtras();
+        if (mListener != null && !TextUtils.isEmpty(action) && bundle != null) {
+            mListener.getJPushCallBack(action, bundle);
         }
     }
 }
