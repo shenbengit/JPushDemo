@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
+
 import com.example.jpushlibrary.constant.JPushConstant;
 import com.example.jpushlibrary.event.JPushEvent;
 import com.example.jpushlibrary.event.JPushMessageEvent;
@@ -15,10 +16,11 @@ import com.example.jpushlibrary.listener.JPushEventListener;
 import com.example.jpushlibrary.listener.JPushListener;
 import com.example.jpushlibrary.listener.JPushMessageListener;
 import com.example.jpushlibrary.listener.JPushTagsAliasListener;
-import com.example.jpushlibrary.receiver.JPushGetTagAliasReceiver;
 import com.example.jpushlibrary.receiver.JPushGetMessageReceiver;
+import com.example.jpushlibrary.receiver.JPushGetTagAliasReceiver;
 
 import java.util.Set;
+
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.JPushMessage;
 
@@ -53,20 +55,25 @@ public class CsjJPushManager implements JPushMessageListener, JPushTagsAliasList
         return Holder.mManager;
     }
 
-
     /**
-     * 初始化JPush
-     * 可以在需要调用的地方初始化
+     * 先初始化Manager
      *
      * @param context 应用的 ApplicationContext
      */
-    public void init(Context context) {
+    public void initManager(Context context) {
         this.mContext = context;
         if (mListener == null) {
             mListener = CsjMessageFactory.newInstance(context);
         }
-        mListener.init();
         initReceiver();
+    }
+
+    /**
+     * 初始化JPush，建议在Application中进行初始化
+     * 可以在需要调用的地方初始化
+     */
+    public void init() {
+        mListener.init();
     }
 
     /**
