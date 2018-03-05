@@ -141,11 +141,13 @@
         <receiver
             android:name=".receiver.JPushGetTagAliasReceiver"
             android:enabled="true">
-            <!--<intent-filter>-->
-                <!--<action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />-->
 
-                <!--<category android:name="com.example.ben.jpushdemo" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" /> -->
+
+
+            <!-- <category android:name="com.example.ben.jpushdemo" /> -->
+            <!-- </intent-filter> -->
         </receiver>
 
         <!-- User defined. 用户自定义的广播接收器 -->
@@ -153,23 +155,26 @@
             android:name=".receiver.JPushGetMessageReceiver"
             android:enabled="true"
             android:exported="false">
-            <!--<intent-filter>-->
 
-                <!--&lt;!&ndash; Required 用户注册SDK的intent &ndash;&gt;-->
-                <!--<action android:name="cn.jpush.android.intent.REGISTRATION" />-->
-                <!--&lt;!&ndash; Required 用户接收SDK消息的intent &ndash;&gt;-->
-                <!--<action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />-->
-                <!--&lt;!&ndash; Required 用户接收SDK通知栏信息的intent &ndash;&gt;-->
-                <!--<action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />-->
-                <!--&lt;!&ndash; Required 用户打开自定义通知栏的intent &ndash;&gt;-->
-                <!--<action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />-->
-                <!--&lt;!&ndash; 通知栏信息点击 &ndash;&gt;-->
-                <!--<action android:name="cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION" />-->
-                <!--&lt;!&ndash; 接收网络变化 连接/断开 since 1.6.3 &ndash;&gt;-->
-                <!--<action android:name="cn.jpush.android.intent.CONNECTION" />-->
+            <!-- <intent-filter> -->
 
-                <!--<category android:name="com.example.ben.jpushdemo" />-->
-            <!--</intent-filter>-->
+
+            <!-- &lt;!&ndash; Required 用户注册SDK的intent &ndash;&gt; -->
+            <!-- <action android:name="cn.jpush.android.intent.REGISTRATION" /> -->
+            <!-- &lt;!&ndash; Required 用户接收SDK消息的intent &ndash;&gt; -->
+            <!-- <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> -->
+            <!-- &lt;!&ndash; Required 用户接收SDK通知栏信息的intent &ndash;&gt; -->
+            <!-- <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> -->
+            <!-- &lt;!&ndash; Required 用户打开自定义通知栏的intent &ndash;&gt; -->
+            <!-- <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> -->
+            <!-- &lt;!&ndash; 通知栏信息点击 &ndash;&gt; -->
+            <!-- <action android:name="cn.jpush.android.intent.NOTIFICATION_CLICK_ACTION" /> -->
+            <!-- &lt;!&ndash; 接收网络变化 连接/断开 since 1.6.3 &ndash;&gt; -->
+            <!-- <action android:name="cn.jpush.android.intent.CONNECTION" /> -->
+
+
+            <!-- <category android:name="com.example.ben.jpushdemo" /> -->
+            <!-- </intent-filter> -->
         </receiver>
 
         <!-- Required. For publish channel feature -->
@@ -183,7 +188,8 @@
             android:value="029af8d74f86111d19093583" />
 
         <service android:name=".service.GetMessageService" />
-        <activity android:name=".activity.SecondActivity"></activity>
+
+        <activity android:name=".activity.SecondActivity" />
     </application>
 
 </manifest>
